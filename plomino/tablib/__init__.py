@@ -1,13 +1,32 @@
-from tablib import Databook, Dataset, detect, import_set, import_book, InvalidDatasetType, InvalidDimensions, UnsupportedFormat
+from zope import component
+from Products.CMFPlomino import interfaces
+from zope.interface import implements
 
-from Products.PythonScripts.Utility import allow_module 
+# TODO: support more of these:
+# from tablib import Databook, Dataset, detect, import_set, InvalidDatasetType, InvalidDimensions, UnsupportedFormat
+
+from tablib import Dataset
+
+from Products.PythonScripts.Utility import allow_module, allow_class
+
 allow_module('plomino.tablib')
+allow_class(Dataset)
 
-class PlominoTablib:
+def dataset(data, headers=None):
+    dataset = Dataset()
+    dataset.dict = data
+    if headers:
+        dataset.headers = headers
+    return dataset
+
+class PlominoTablibUtils:
+    implements(interfaces.IPlominoUtils)
+
     module = 'plomino.tablib'
-    methods = ['Databook', 'Dataset', 'detect', 'import_set',
-            'import_book', 'InvalidDatasetType', 'InvalidDimensions',
-            'UnsupportedFormat', ]
+    methods = ['dataset']
+
+component.provideUtility(PlominoTablibUtils, interfaces.IPlominoUtils)
 
 def initialize(context):
     """Initializer called when used as a Zope 2 product."""
+
