@@ -1,5 +1,7 @@
 .. contents::
 
+.. warning:: Don't use this yet; see issue 1. 
+
 Introduction
 ============
 
