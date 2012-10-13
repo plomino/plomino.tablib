@@ -14,8 +14,6 @@ Include ``plomino.tablib`` in the ``eggs`` section of your buildout::
         ...
         plomino.tablib
 
-The package has not yet been released to PyPI, so you'll need to check out the egg from github.
-
 When this package is present, the ``dataset`` function is available to Plomino formulas. 
 
 Examples::
