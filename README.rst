@@ -33,6 +33,10 @@ Examples::
     mytable.csv
     mytable.json
 
+    # Get the table as HTML or Excel:
+    mytable.html
+    mytable.xls
+
 See tablib_ for more.
 
 
